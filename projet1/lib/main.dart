@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projet1/pages/auth/home.dart';
+import 'package:projet1/pages/splash/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       title: 'Opportunités Mali',
-
-      home: const Home(),
+      home: const SplashScreen(),
     );
   }
 }
