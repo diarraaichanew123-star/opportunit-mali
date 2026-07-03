@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projet1/pages/user/candidature.dart';
 import 'package:projet1/pages/user/detailOpportunit%C3%A9.dart';
+import 'package:projet1/pages/user/favorie.dart';
+import 'package:projet1/pages/user/profile.dart';
 
 class AcceuilScreen extends StatefulWidget {
   const AcceuilScreen({super.key});
@@ -13,6 +16,11 @@ class _AcceuilScreenState extends State<AcceuilScreen> {
   // Catégorie sélectionnée
   //-------------------------------------------------
   String selectedCategory = "Tous";
+
+  //-------------------------------------------------
+  // Index sélectionnée
+  //-------------------------------------------------
+  int selectedIndex = 0;
 
   //-------------------------------------------------
   // Texte de recherche
@@ -329,19 +337,60 @@ class _AcceuilScreenState extends State<AcceuilScreen> {
       // BOTTOM NAVIGATION BAR
       //-------------------------------------------------
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+        currentIndex: selectedIndex,
+
+        type: BottomNavigationBarType
+            .fixed, //  important pour afficher tous les labels
+
         selectedItemColor: const Color(0xFF1B8F4D),
+        unselectedItemColor: Colors.grey,
+
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const AcceuilScreen()),
+            );
+          }
+
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const FavorisScreen()),
+            );
+          }
+
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const CandidaturesScreen()),
+            );
+          }
+
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ProfilScreen()),
+            );
+          }
+        },
 
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Accueil"),
-
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favoris"),
-
           BottomNavigationBarItem(
             icon: Icon(Icons.description),
             label: "Candidatures",
           ),
-
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
         ],
       ),

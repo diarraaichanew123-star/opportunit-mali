@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projet1/pages/admin/dashboard_admin.dart';
+import 'package:projet1/pages/admin/gestionCategorie_admin.dart';
+import 'package:projet1/pages/admin/gestionOffres_admin.dart';
+import 'package:projet1/pages/admin/gestionUtilisateur_admin.dart';
+import 'package:projet1/pages/admin/login_admin.dart';
 import 'package:projet1/pages/splash/splash.dart';
 
 void main() {
