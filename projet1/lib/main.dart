@@ -1,12 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:projet1/pages/admin/dashboard_admin.dart';
-import 'package:projet1/pages/admin/gestionCategorie_admin.dart';
-import 'package:projet1/pages/admin/gestionOffres_admin.dart';
-import 'package:projet1/pages/admin/gestionUtilisateur_admin.dart';
-import 'package:projet1/pages/admin/login_admin.dart';
+import 'package:projet1/firebase_options.dart';
 import 'package:projet1/pages/splash/splash.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
@@ -17,7 +18,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       title: 'Opportunités Mali',
       home: const SplashScreen(),
     );
